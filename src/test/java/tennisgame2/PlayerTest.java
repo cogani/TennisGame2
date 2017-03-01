@@ -13,7 +13,7 @@ public class PlayerTest {
 
     @Before
     public void setup() {
-        player = new Player();
+        player = new Player("aPlayer");
     }
 
     @Test
@@ -36,7 +36,7 @@ public class PlayerTest {
     public void GivenAPlayerHas2Points_WhenScoreIsQueried_ThirtyIsReturned() {
         String expectedScore = "thirty";
 
-        increaseScore(player, 2);
+        TestCommonHelpers.increaseScore(player, 2);
 
         checkResult(expectedScore);
     }
@@ -45,15 +45,9 @@ public class PlayerTest {
     public void GivenAPlayerHas3Points_WhenScoreIsQueried_FortyIsReturned() {
         String expectedScore = "forty";
 
-        increaseScore(player, 3);
+        TestCommonHelpers.increaseScore(player, 3);
 
         checkResult(expectedScore);
-    }
-
-    private void increaseScore(Player player, int points) {
-        for (int i = 0; i < points; i++) {
-            player.winBall();
-        }
     }
 
     private void checkResult(String expectedScore) {
